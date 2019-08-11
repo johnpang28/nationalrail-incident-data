@@ -1,0 +1,40 @@
+= Demo Application to consume National Rail Incident Data
+
+This is an example application for consuming https://www.nationalrail.co.uk/100298.aspx[National Rail real time incident
+data].
+
+The app is written using the https://kotlinlang.org/[Kotlin] language and the
+https://spring.io/projects/spring-boot[Spring Boot] framework.
+
+The incident data is XML, so the JAXB library is used for marshalling the data.
+
+The incident data is published on a JMS topic using ActiveMQ.
+
+== Prerequisites
+
+* Runs on JDK 11+.
+* Requires an account with National Rail Data portal: https://opendata.nationalrail.co.uk/
+
+== Running the App
+
+To build and run the tests:
+----
+./mvnw clean test
+----
+
+To run the application, use the following command and substitute your credentials for the National Rail real time
+incident topic:
+----
+./mvnw spring-boot:run -Dspring.activemq.user=YOUR_USERNAME -Dspring.activemq.password=YOUR_PASSWORD
+----
+
+== Not working?
+
+Since the incoming data is "pushed", during periods of no incidents, there will be no consumed messages. Do not be
+alarmed if you start the app and don't see any incoming incidents being logged! It simply means that trains are running
+on time!
+
+== Disclaimer
+
+The app simply demonstrates how to consume National Rail real time incident data. It is not a production ready
+application, so please use at your own risk.

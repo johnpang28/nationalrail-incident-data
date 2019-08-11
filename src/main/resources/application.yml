@@ -1,0 +1,9 @@
+spring:
+  activemq:
+    user: YOUR_USER
+    password: YOUR_PASSWORD
+    broker-url: tcp://kb-dist-261e4f.nationalrail.co.uk:61616?jms.watchTopicAdvisories=false
+  jms:
+    pub-sub-domain: true
+
+logging.level.root: info
